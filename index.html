@@ -26,7 +26,7 @@
     }
 
     #logo{
-      padding: 8px 0 0 20px;
+      padding: 8px 0 0 6px;
       font-weight: bold;
       font-size:18px;
       float:left;
@@ -45,7 +45,7 @@
     #toggles{
       margin:0;
       list-style:none;
-      width:200px;
+      width:193.4px;
       margin:0 auto;
       border:1px solid gray;
       border-radius:3px;
@@ -82,6 +82,7 @@
       font-family:monotype;
       font-size:90%;
       padding:5px;
+      box-sizing:border-box;
 
     }
 
@@ -102,6 +103,10 @@
       border:none;
     }
 
+    .selected{
+      background-color:gray;
+    }
+
   </style>
 
 </head>
@@ -118,10 +123,10 @@
       </div>
 
       <ul id="toggles">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JS</li>
-        <li style="border:none">Result</li>
+        <li class="toggle selected">HTML</li>
+        <li class="toggle">CSS</li>
+        <li class="toggle">JS</li>
+        <li class="toggle selected" style="border:none">Result</li>
       </ul>
 
     </div>
@@ -171,6 +176,29 @@
       var codeContainerHeight=windowHeight-menuBarHeight;
 
       $(".codeContainer").height(codeContainerHeight+"px");
+
+      $(".toggle").click(function(){
+          $(this).toggleClass("selected");
+
+          var activeDiv=$(this).html();
+
+          $("#"+activeDiv+"Container").toggle();
+
+          var showingDivs=$(".codeContainer").filter(function(){
+
+            return($(this).css("display")!="none");
+
+          }).length;
+
+          var width=100/showingDivs;
+
+          //$(".codeContainer").width(width+"%");
+          
+          $(".codeContainer").css("width", width+"%");
+
+
+
+      });
 
     </script>
   
