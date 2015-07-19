@@ -9,105 +9,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-  <style>
-
-    body{
-      margin:0;
-      padding:0;
-      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-      font-weight: 300;
-    }
-
-    #menuBar{
-      width:100%;
-      height:40px;
-      background-color: #bdc3c7;
-      border-bottom:1px solid #7f8c8d;
-    }
-
-    #logo{
-      padding: 8px 0 0 6px;
-      font-weight: bold;
-      font-size:18px;
-      float:left;
-    }
-
-    #buttonDiv{
-      float:right;
-      padding: 7px 10px 0 0;
-    }
-
-    #runButton{
-      font-size:105%;
-      border-radius:3px;
-    }
-
-    #toggles{
-      margin:0;
-      list-style:none;
-      width:193.4px;
-      margin:0 auto;
-      border:1px solid gray;
-      border-radius:3px;
-      height:27px;
-      padding:0;
-      position:relative;
-      top:5px;
-
-    }
-
-    #toggles li{
-      float:left;
-      border-right:1px solid gray;
-      padding:5px 7px;
-
-    }
-
-    .clear{
-      clear:both;
-    }
-
-    .codeContainer{
-      height:100%;
-      width:50%;
-      float:left;
-      position:relative;
-    }
-
-    .codeContainer textarea{
-      width:100%;
-      height:100%;
-      border:none;
-      border-right:1px solid gray;
-      font-family:monotype;
-      font-size:90%;
-      padding:5px;
-      box-sizing:border-box;
-
-    }
-
-    .codeLabel{
-      position:absolute;
-      right:10px;
-      top:10px;
-    }
-
-    #CSSContainer, #JSContainer{
-      display:none;
-    }
-
-    iframe{
-      height:100%;
-      position:relative;
-      left:20px;
-      border:none;
-    }
-
-    .selected{
-      background-color:gray;
-    }
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
 </head>
 <body>
@@ -116,7 +18,8 @@
 
     <div id="menuBar">
 
-      <div id="logo">CodeTestr</div>
+      <div id="logo"><a href="http://jennifergapay.com">CodeTestr</a></div>
+
 
       <div id="buttonDiv">
         <button id="runButton">Run</button>
@@ -145,7 +48,7 @@
 
       <div class="codeLabel">CSS</div>
 
-      <textarea id="cssCode">html{color:blue}</textarea>
+      <textarea id="cssCode">html{color:#d35400}</textarea>
 
     </div>
 
@@ -153,7 +56,7 @@
 
       <div class="codeLabel">JS</div>
 
-      <textarea id="jsCode">document.getElementById("test").innerHTML="It's working!";</textarea>
+      <textarea id="jsCode">document.getElementById("test").innerHTML="It's working!  Feel free to click the CSS and JS toggles above to view/revise the code.";</textarea>
 
     </div>
 
@@ -166,43 +69,15 @@
     </div>
 
 
-
   </div>
 
-    <script>
+  <div class="clear"></div>
 
-      var windowHeight=$(window).height();
-      var menuBarHeight=$("#menuBar").height();
-      var codeContainerHeight=windowHeight-menuBarHeight;
+  <div id="footer">
+    <p><a href="http://jennifergapay.com">CodeTestr by Jennifer Gapay</p>
+  </div>
 
-      $(".codeContainer").height(codeContainerHeight+"px");
-
-      $(".toggle").click(function(){
-          $(this).toggleClass("selected");
-
-          var activeDiv=$(this).html();
-
-          $("#"+activeDiv+"Container").toggle();
-
-          var showingDivs=$(".codeContainer").filter(function(){
-
-            return($(this).css("display")!="none");
-
-          }).length;
-
-          var width=100/showingDivs;
-
-          $(".codeContainer").css("width", width+"%");
-      });
-
-          $("#runButton").click(function(){
-
-            $("iframe").contents().find("html").html('<style>'+$("#cssCode").val()+'</style>'+$("#htmlCode").val());
-
-            document.getElementById("resultFrame").contentWindow.eval($("#jsCode").val());
-          });
-
-    </script>
+  <script type="text/javascript" src="js/javascript.js"></script>
   
 </body>
 </html>
