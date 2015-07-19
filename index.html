@@ -145,7 +145,7 @@
 
       <div class="codeLabel">CSS</div>
 
-      <textarea id="cssCode">html{background-color:blue}</textarea>
+      <textarea id="cssCode">html{color:blue}</textarea>
 
     </div>
 
@@ -153,7 +153,7 @@
 
       <div class="codeLabel">JS</div>
 
-      <textarea id="jsCode">document.GetElementById("test").innerHTML="It's working!";</textarea>
+      <textarea id="jsCode">document.getElementById("test").innerHTML="It's working!";</textarea>
 
     </div>
 
@@ -193,20 +193,14 @@
           var width=100/showingDivs;
 
           $(".codeContainer").css("width", width+"%");
+      });
 
           $("#runButton").click(function(){
 
             $("iframe").contents().find("html").html('<style>'+$("#cssCode").val()+'</style>'+$("#htmlCode").val());
 
             document.getElementById("resultFrame").contentWindow.eval($("#jsCode").val());
-
-
-
           });
-
-
-
-      });
 
     </script>
   
